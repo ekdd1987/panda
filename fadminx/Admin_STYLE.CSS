@@ -1,0 +1,129 @@
+BODY
+{
+	FONT-FAMILY: "ËÎÌו";
+	FONT-SIZE: 14px;
+	text-decoration: none;
+	line-height: 150%;
+	background-color: #FBFDFF;
+	background:#ffffff;
+text-decoration: none;
+SCROLLBAR-FACE-COLOR: #C6EBDE;
+SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #39867B; SCROLLBAR-3DLIGHT-COLOR: #39867B; SCROLLBAR-ARROW-COLOR: #330000; SCROLLBAR-TRACK-COLOR: #E2F3F1; SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+}
+TD
+{
+	FONT-FAMILY: "ËÎÌו";
+	FONT-SIZE: 14px;
+	height:30px;
+}
+Input
+{
+	FONT-SIZE: 14px;
+	HEIGHT: 20px;
+}
+Button
+{
+	FONT-SIZE: 14px;
+	HEIGHT: 20px; 
+}
+Select
+{
+	FONT-SIZE: 14px;
+	HEIGHT: 20px;
+}
+A
+{
+	TEXT-DECORATION: none;
+	color: #000000;
+
+}
+A:hover
+{
+	COLOR: #009286;
+	text-decoration: underline;
+
+}
+.title
+{
+	background:url(Images/topBar_bg.gif);
+}
+.border
+{
+	border: 1px solid #009286;
+}
+.tdbg{
+	background:#E1F4EE;
+	line-height: 120%;
+}
+.tdbg2{
+	background:#E0EEF5;
+	line-height: 120%;
+}
+.topbg
+{
+	background:#009286;
+	color: #FFFFFF;
+
+}
+.bgcolor {
+	background-color: #E1F4EE;
+}
+
+
+
+.p_input {
+border: 1px #009286 solid;
+padding: 0px;
+width: 40px;
+height: 20px;
+margin: 0px;
+background: #E1F4EE;
+}
+.p_total {
+background-color: #F2F2F2;
+border: 1px solid #A3B4A2;
+border-right: 0px solid #A3B4A2;
+font-weight: normal;
+}
+.p_pages {
+background-color: #F2F2F2;
+border: 1px solid #A3B4A2;
+margin-right:1px;
+vertical-align: middle;
+font-weight: normal;
+}
+.p_num {
+background-color: #E1F4EE;
+border: 1px solid #009286;
+margin-right:1px;
+vertical-align: middle;
+padding-top:3px;
+padding-bottom:2px;
+padding-left:6px;
+padding-right:6px;
+}
+a:hover.p_num  {
+background-color: #F2F2F2;
+border: 1px solid #ff0000;
+text-decoration: none;
+}
+.p_redirect {
+background-color: #FFFFFF;
+border: 1px solid #A3B4A2;
+margin-right:1px;
+font-size: 12px !important;
+font-size: 13px;
+}
+a:hover.p_redirect {
+background-color: #F2F2F2;
+border: 1px solid #A3B4A2;
+text-decoration: none;
+}
+.p_curpage {
+margin-right:1px;
+border: 1px solid #A3B4A2;
+vertical-align: middle;
+background-color: #f8d77f;
+color: #92A05A;
+font-weight: normal;
+}

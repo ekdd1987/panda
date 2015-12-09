@@ -30,18 +30,6 @@ require_once("checkuser.php");
 <?php
 $newjibie=$rowuser["standardlevel"]+1;
 
-if($newjibie==2)
-{
-$sql="select count(*) as alluu2 from users where pid= '".$rowuser['id']."' ";
-$query=$db->query($sql);
-$rownext=$db->fetch_array($query);
-if($rownext['alluu2']<3)
-{
-	echo "<script>alert('您的邀请好友没有满员无法升级!');window.parent.location.href='user.php';</script>";
-	exit();
-}
-}
-
 
 //$manzu=1;
 //if($newjibie>=3&&$newjibie<=6)
@@ -117,7 +105,7 @@ if($rownext['alluu2']<3)
 //    {
 //		$manzu=0;
 //	}
-//	
+//
 //}
 
 if($_POST['action']=="apply")
@@ -129,7 +117,7 @@ if($_POST['action']=="apply")
 //	    exit();
 //	}
 
-	
+
 	//$sql="select * from shengji where userid='".$rowuser['id']."' and jibie=".$newjibie." and jieuserid='".$_POST['upid']."' and types='".$_POST['types']."' limit 1";
 	$sql="select * from shengji where userid='".$rowuser['id']."' and jibie=".$newjibie." and types='".$_POST['types']."' limit 1";
     $query=$db->query($sql);
@@ -148,7 +136,7 @@ if($_POST['action']=="apply")
 		echo "<script>alert('相关好友不存在!');window.parent.location.href='upgrade.php';</script>";
 	    exit();
 	}
-	
+
 
 	$sql="insert into shengji (types,userid,jieuserid,jibie,adddate,addtime) values ('".$_POST['types']."','".$rowuser['id']."','".$_POST['upid']."','".$newjibie."','".date("Y-m-d")."','".date("Y-m-d H:i:s")."')";
     $db->query($sql);
@@ -213,7 +201,7 @@ if($rowuser["standardlevel"]==0)
 		?>
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" style=" background-color:#060"><?php if($row['passed']==1){echo "已经通过";}else{echo "已提交，待升级";}?></button>
                                         </th>
                 </tr>
@@ -223,7 +211,7 @@ if($rowuser["standardlevel"]==0)
 	{?>
     <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请升级</button>
                                         </th>
                 </tr>
@@ -231,7 +219,7 @@ if($rowuser["standardlevel"]==0)
             </table>
             </form>
             <br />
-            
+
 
 
 
@@ -241,13 +229,13 @@ if($rowuser["standardlevel"]==0)
 	$row=$db->fetch_array($query);
 	if(is_array($row))
     {
-		
+
     $sqluser22="select * from users where id =".$row['jieuserid']." limit 1";
     $queryuser22=$db->query($sqluser22);
 	$rowuser22=$db->fetch_array($queryuser22);
 	if(is_array($rowuser22))
     {
-		
+
 	}
 ?>
           	<table class="table table-bordered">
@@ -270,7 +258,7 @@ if($rowuser["standardlevel"]==0)
 
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" style=" background-color:#060"><?php if($row['passed']==1){echo "已经通过";}else{echo "已提交，待核实";}?></button>
                                         </th>
                 </tr>
@@ -321,7 +309,7 @@ if($rowuser["standardlevel"]==0)
 		?>
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" style=" background-color:#060"><?php if($row['passed']==1){echo "已经通过";}else{echo "已提交，待核实";}?></button>
                                         </th>
                 </tr>
@@ -331,7 +319,7 @@ if($rowuser["standardlevel"]==0)
 	{?>
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请核实</button>
                                         </th>
                 </tr>
@@ -356,7 +344,7 @@ $sftijiaoshengji=1;
 
 $newstandardlevel=$rowuser['standardlevel']+1;
 	?>
-        
+
         <div class="panel">
           <div class="panel-head"><strong>需要升级【<span class="text-yellow"><?php echo userjibiename($newstandardlevel)?></span>】请用微信加以下会员为好友：</strong></div>
           <div class="panel-body bg-white">
@@ -368,19 +356,19 @@ $newstandardlevel=$rowuser['standardlevel']+1;
 	$row=$db->fetch_array($query);
 	if(is_array($row))
     {
-		
+
 	$sqluser2="select * from users where id =".$row['jieuserid']." limit 1";
     $queryuser2=$db->query($sqluser2);
 	$rowuser2=$db->fetch_array($queryuser2);
 	if(is_array($rowuser2))
     {
-		
+
 	}
-	
+
 	$sftijiaoshengji=1;
 		?>
-        
-        
+
+
 <table class="table table-bordered">
             	<tr class="blue">
                 	<td width="30%" class="text-right">会员昵称</th>
@@ -398,21 +386,21 @@ $newstandardlevel=$rowuser['standardlevel']+1;
                 	<td width="30%" class="text-right">会员级别</th>
                 	<td class="text-left"><?php echo userjibiename($rowuser2['standardlevel'])?>&nbsp;&nbsp;<div class='level_icon tips'><div class='left'></div><div class='right'></div><span><?php echo $rowuser2['standardlevel']?></span></div><div class='icons'><img src='Static/images/levels/<?php echo $rowuser2['standardlevel']?>.png' /></div></th>
                 </tr>
-                
+
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" style=" background-color:#060"><?php if($row['passed']==1){echo "已经通过";}else{echo "已提交，待升级";}?></button>
                                         </th>
                 </tr>
 
-                
+
             </table>
 <?php
 	}
 	else
 	{?>
-    
+
     <?php
 	$sqluser2="select * from users where id in(".$rowuser['ppath'].") and ceng<=".($rowuser['ceng']-$newstandardlevel)." and standardlevel>=".$newstandardlevel." and id not in(select jieuserid from shengji where userid='".$rowuser['id']."' and types=1 and jibie>1) order by ceng desc";
     $queryuser2=$db->query($sqluser2);
@@ -448,15 +436,15 @@ $newstandardlevel=$rowuser['standardlevel']+1;
                 	<td width="30%" class="text-right">会员级别</th>
                 	<td class="text-left"><?php echo userjibiename($rowuser2['standardlevel'])?>&nbsp;&nbsp;<div class='level_icon tips'><div class='left'></div><div class='right'></div><span><?php echo $rowuser2['standardlevel']?></span></div><div class='icons'><img src='Static/images/levels/<?php echo $rowuser2['standardlevel']?>.png' /></div></th>
                 </tr>
-    
+
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <!--<?php if($manzu==0){?><button class="button bg-yellow" style=" background-color:#060">未满足要求，不可申请！</button><?php }else{?><button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请升级</button><?php }?>-->
                                         <button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请升级</button>
                                         </th>
                 </tr>
-                
+
             </table>
             </form>
 <?php }?>
@@ -468,19 +456,19 @@ $newstandardlevel=$rowuser['standardlevel']+1;
 <?php
 if($sftijiaoshengji==1)
 {
-	
+
 	$sql="select * from shengji where userid='".$rowuser['id']."' and jibie=".$newjibie." and types=2 limit 1";
     $query=$db->query($sql);
 	$row=$db->fetch_array($query);
 	if(is_array($row))
     {
-		
+
 	$sqluser22="select * from users where id =".$row['jieuserid']." limit 1";
     $queryuser22=$db->query($sqluser22);
 	$rowuser22=$db->fetch_array($queryuser22);
 	if(is_array($rowuser22))
     {
-		
+
 	}
 		?>
 <table class="table table-bordered">
@@ -500,20 +488,20 @@ if($sftijiaoshengji==1)
                 	<td width="30%" class="text-right">会员级别</th>
                 	<td class="text-left"><?php echo userjibiename($rowuser22['standardlevel'])?>&nbsp;&nbsp;<div class='level_icon tips'><div class='left'></div><div class='right'></div><span><?php echo $rowuser22['standardlevel']?></span></div><div class='icons'><img src='Static/images/levels/<?php echo $rowuser22['standardlevel']?>.png' /></div></th>
                 </tr>
-           
+
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <button class="button bg-yellow" style=" background-color:#060"><?php if($row['passed']==1){echo "已经通过";}else{echo "已提交，待核实";}?></button>
                                         </th>
                 </tr>
-                
+
             </table>
 <?php
 	}
 	else
 	{?>
-    
+
 <?php
 if($newjibie==2||$newjibie==3)
 {
@@ -552,16 +540,16 @@ else
                 	<td class="text-left"><?php echo userjibiename($rowuser3['standardlevel'])?>&nbsp;&nbsp;<div class='level_icon tips'><div class='left'></div><div class='right'></div><span><?php echo $rowuser3['standardlevel']?></span></div><div class='icons'><img src='Static/images/levels/<?php echo $rowuser3['standardlevel']?>.png' /></div></th>
                 </tr>
 
-    
+
                 <tr class="blue">
                 	<td class="text-center" colspan="2">
-                    
+
                                         <!--<?php if($manzu==0){?><button class="button bg-yellow" style=" background-color:#060">未满足要求，不可申请！</button><?php }else{?><button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请核实</button><?php }?>-->
                                         <button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请核实</button>
-                                        
+
                                         </th>
                 </tr>
-                
+
             </table>
             </form>
 <?php }
@@ -570,9 +558,9 @@ else
                       <iframe src="null.html" name="formprocess" style="display:none;"></iframe>
           </div>
         </div>
-<?php }?>  
-        
-        
+<?php }?>
+
+
             </div>
 	  <br />
 

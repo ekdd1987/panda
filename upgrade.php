@@ -502,56 +502,6 @@ if($sftijiaoshengji==1)
 	else
 	{?>
 
-<?php
-if($newjibie==2||$newjibie==3)
-{
-	$sqluser3="select * from users where (id in(".$rowuser['ppath'].") and id<>".$rowuser2['id'].") and standardlevel>=5 and id not in(select jieuserid from shengji where userid='".$rowuser['id']."' and types=2 and jibie>1) order by ceng desc limit 1";
-}
-else
-{
-	$sqluser3="select * from users where (id in(".$rowuser['ppath'].") and id<>".$rowuser2['id'].") and standardlevel>=9 and id not in(select jieuserid from shengji where userid='".$rowuser['id']."' and types=2 and jibie>1) order by ceng desc limit 1";
-}
-    $queryuser3=$db->query($sqluser3);
-	$rowuser3=$db->fetch_array($queryuser3);
-	if(is_array($rowuser3))
-    {
-		$jiekuanuser=$rowuser3['loginname'];
-	}
-?>
-            <form method="post" class="form form-block" target="formprocess">
-            <input type="hidden" value="apply" name="action" />
-            <input type="hidden" value="<?php echo $rowuser3['id']?>" name="upid" />
-            <input type="hidden" value="2" name="types" />
-          	<table class="table table-bordered">
-            	<tr class="blue">
-                	<td width="30%" class="text-right">会员昵称</th>
-                	<td class="text-left"><?php echo $rowuser3['nickname']?></th>
-                </tr>
-                <tr class="white">
-                	<td class="text-right">微信号</th>
-                	<td class="text-left"><?php echo $rowuser3['wechat']?></th>
-                </tr>
-                <tr class="blue">
-                	<td class="text-right">手机号</th>
-                	<td class="text-left"><?php echo $rowuser3['loginname']?></th>
-                </tr>
-                <tr class="white">
-                	<td width="30%" class="text-right">会员级别</th>
-                	<td class="text-left"><?php echo userjibiename($rowuser3['standardlevel'])?>&nbsp;&nbsp;<div class='level_icon tips'><div class='left'></div><div class='right'></div><span><?php echo $rowuser3['standardlevel']?></span></div><div class='icons'><img src='Static/images/levels/<?php echo $rowuser3['standardlevel']?>.png' /></div></th>
-                </tr>
-
-
-                <tr class="blue">
-                	<td class="text-center" colspan="2">
-
-                                        <!--<?php if($manzu==0){?><button class="button bg-yellow" style=" background-color:#060">未满足要求，不可申请！</button><?php }else{?><button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请核实</button><?php }?>-->
-                                        <button class="button bg-yellow" onClick="javascript:return confirm(&#39;确认向该好友提出申请吗？&#39;);">申请核实</button>
-
-                                        </th>
-                </tr>
-
-            </table>
-            </form>
 <?php }
 }?>
             <br />
